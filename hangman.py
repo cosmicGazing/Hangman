@@ -48,7 +48,7 @@ print(f'You have {MAX_LIVES} chances before you run out of guesses.')
 
 while MAX_LIVES > 0:
     if '_' not in blank_board_list:
-        print(f'You WIN!!! You Guessed the phrase!')
+        print('You WIN!!! You Guessed the phrase!')
         break
     else:
         while True:
