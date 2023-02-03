@@ -14,9 +14,15 @@ def replace_underscore_with_letter(letter_index_list: list, letter: str):  # Rep
         blank_board_list.pop(each_correct_letter)
         blank_board_list.insert(each_correct_letter, letter)
     return blank_board_list
-    
 
-player_word = input('Please type a word: ').upper()
+
+while True:
+    player_word = input('Please type a word: ').upper()
+    if player_word.isalpha():
+        break
+    else:
+        print('Sorry, letters only.')
+
 spaces_index_storage = list()
 guessed_letters = set()  # Bucket for player guessed letters
 blank_board_string = '_' * len(player_word)
@@ -42,10 +48,16 @@ print(f'You have {MAX_LIVES} chances before you run out of guesses.')
 
 while MAX_LIVES > 0:
     if '_' not in blank_board_list:
-        print('YOU WIN!!! YOU\'VE SOLVED THE PUZZLE! HURRAY!')
+        print(f'You WIN!!! You Guessed the phrase!')
         break
     else:
-        player_letter_guess = input('Please guess a letter: ').upper()
+        while True:
+            player_letter_guess = input('Please guess a letter: ').upper()
+            if player_letter_guess.isalpha():
+                break
+            else:
+                print('Sorry, letters only.')
+
         if player_letter_guess not in guessed_letters:  # Checks if the player has already guessed this letter
             guessed_letters.add(player_letter_guess)
             if player_letter_guess in player_word:
